@@ -7,8 +7,8 @@ export const profile = {
   email: 'didulanalokugamage@gmail.com',
   github: 'https://github.com/Didulana',
   linkedin: 'https://www.linkedin.com/in/didulanalokugamage/',
-  // e.g. '/Didulana-Lokugamage-CV.pdf' after placing the file in /public
-  resumeUrl: '/Didulana-Lokugamage-CV.pdf',
+  // Must match the file name in /public exactly
+  resumeUrl: '/Didulana_Lokugamage_CV.pdf',
 };
 
 // Typed out line by line in the hero terminal.
