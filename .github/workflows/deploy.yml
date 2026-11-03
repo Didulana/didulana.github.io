@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: read
+  actions: read
   pages: write
   id-token: write
 
@@ -48,6 +49,24 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      # While Pages is set to "Deploy from a branch", GitHub also publishes the raw, unbuilt
+      # source for every push ("pages build and deployment"), which shows a blank page.
+      # Wait for that run to finish so this built deploy always lands last and wins.
+      - name: Wait for GitHub's branch deploy to finish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for i in $(seq 1 36); do
+            pending=$(gh api "repos/${{ github.repository }}/actions/runs?head_sha=${{ github.sha }}&per_page=50" \
+              --jq '[.workflow_runs[] | select(.name == "pages build and deployment" and .status != "completed")] | length')
+            if [ "$pending" = "0" ]; then
+              echo "No branch deploy in progress."
+              break
+            fi
+            echo "Branch deploy still running; waiting..."
+            sleep 10
+          done
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
