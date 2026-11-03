@@ -4,11 +4,11 @@ export const profile = {
   role: 'Computer Engineering Undergraduate',
   university: 'University of Peradeniya',
   location: 'Sri Lanka',
-  email: '',
+  email: 'didulanalokugamage@gmail.com',
   github: 'https://github.com/Didulana',
-  linkedin: '',
+  linkedin: 'https://www.linkedin.com/in/didulanalokugamage/',
   // e.g. '/Didulana-Lokugamage-CV.pdf' after placing the file in /public
-  resumeUrl: '',
+  resumeUrl: '/Didulana-Lokugamage-CV.pdf',
 };
 
 // Typed out line by line in the hero terminal.
