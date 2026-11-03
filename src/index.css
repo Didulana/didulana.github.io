@@ -1,0 +1,256 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Light: crisp cool white with blue, cyan and emerald accents */
+  --paper: 247 249 252;
+  --surface: 255 255 255;
+  --ink: 15 23 42;
+  --accent: 37 99 235;
+  --teal: 8 145 178;
+  --mint: 5 150 105;
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  /* Dark: deep ocean slate */
+  --paper: 6 11 20;
+  --surface: 13 20 34;
+  --ink: 228 236 246;
+  --accent: 96 165 250;
+  --teal: 34 211 238;
+  --mint: 52 211 153;
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-paper text-ink font-sans antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+::selection {
+  background-color: rgb(var(--accent));
+  color: rgb(var(--paper));
+}
+
+:focus-visible {
+  outline: 2px solid rgb(var(--accent));
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@layer components {
+  .eyebrow {
+    @apply font-mono text-xs font-medium uppercase tracking-[0.14em] text-accent;
+  }
+
+  .chip {
+    @apply inline-flex items-center rounded-full border border-ink/15 px-3 py-1 text-xs font-medium text-ink/80;
+  }
+
+  .card {
+    @apply rounded-2xl border border-ink/10 bg-surface;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-colors duration-200;
+  }
+
+  .btn-primary {
+    @apply btn bg-ink text-paper hover:bg-accent;
+  }
+
+  .btn-secondary {
+    @apply btn border border-ink/20 hover:border-accent hover:text-accent;
+  }
+}
+
+@keyframes ping-soft {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+.animate-ping-soft {
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: ping-soft 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .animate-ping-soft { animation: none; }
+}
+
+/* Outlined display text — used for the surname and section numbers */
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgb(var(--ink) / 0.85);
+}
+
+/* Highlighter-pen underline */
+.marker {
+  background: linear-gradient(transparent 62%, rgb(var(--mint) / 0.3) 62%);
+  padding: 0 0.1em;
+}
+
+/* Infinite tool strip */
+.marquee {
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+}
+.marquee-track {
+  animation: marquee 40s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+
+/* Coloured backdrops behind each project illustration */
+.project-stage {
+  position: relative;
+  background-image: radial-gradient(rgb(var(--ink) / 0.12) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+.project-stage--kidsroute { background-color: rgb(var(--teal) / 0.14); }
+.project-stage--lexmed { background-color: rgb(var(--accent) / 0.13); }
+.project-stage--fabric { background-color: rgb(var(--mint) / 0.12); }
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+  .animate-blink { animation: none; }
+}
+
+/* Hero background: slow-drifting colour fields */
+.aurora {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  opacity: 0.35;
+  will-change: transform;
+}
+.aurora-a {
+  width: 38rem;
+  height: 38rem;
+  right: -10rem;
+  top: -12rem;
+  background: rgb(var(--accent) / 0.6);
+  animation: drift-a 22s ease-in-out infinite alternate;
+}
+.aurora-b {
+  width: 30rem;
+  height: 30rem;
+  left: -12rem;
+  bottom: -8rem;
+  background: rgb(var(--teal) / 0.45);
+  animation: drift-b 26s ease-in-out infinite alternate;
+}
+.aurora-c {
+  width: 26rem;
+  height: 26rem;
+  left: 35%;
+  top: 20%;
+  background: rgb(var(--mint) / 0.4);
+  animation: drift-c 30s ease-in-out infinite alternate;
+}
+@keyframes drift-c {
+  to { transform: translate(-10rem, 6rem) scale(1.2); }
+}
+@keyframes drift-a {
+  to { transform: translate(-14rem, 10rem) scale(1.15); }
+}
+@keyframes drift-b {
+  to { transform: translate(16rem, -8rem) scale(0.9); }
+}
+.dots-mask {
+  mask-image: radial-gradient(ellipse 85% 75% at 50% 40%, black 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 85% 75% at 50% 40%, black 30%, transparent 80%);
+}
+
+/* Cards with a glow that follows the cursor */
+.spotlight::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: radial-gradient(260px circle at var(--x, -100px) var(--y, -100px), rgb(var(--accent) / 0.8), transparent 70%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+.spotlight::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(320px circle at var(--x, -100px) var(--y, -100px), rgb(var(--accent) / 0.07), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+.spotlight:hover::before,
+.spotlight:hover::after {
+  opacity: 1;
+}
+
+/* Light sweep across a surface */
+.shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 35%, rgb(255 255 255 / 0.25) 50%, transparent 65%);
+  transform: translateX(-100%);
+  animation: shimmer 5s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes shimmer {
+  0%, 60% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Contact block: colour that moves behind the text */
+.contact-blob {
+  position: absolute;
+  z-index: -1;
+  border-radius: 9999px;
+  filter: blur(70px);
+  opacity: 0.5;
+}
+.contact-blob-a {
+  width: 22rem;
+  height: 22rem;
+  right: -6rem;
+  top: -8rem;
+  background: rgb(var(--accent));
+  animation: drift-a 18s ease-in-out infinite alternate;
+}
+.contact-blob-b {
+  width: 18rem;
+  height: 18rem;
+  left: 20%;
+  bottom: -10rem;
+  background: rgb(var(--mint));
+  animation: drift-b 20s ease-in-out infinite alternate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora, .contact-blob, .shimmer::after { animation: none; }
+}
+
+/* Hero surname: one continuous gradient across the whole word */
+.name-gradient {
+  background-image: linear-gradient(90deg, rgb(var(--accent)), rgb(var(--teal)) 55%, rgb(var(--mint)));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
