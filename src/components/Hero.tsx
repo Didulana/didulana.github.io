@@ -7,18 +7,33 @@ import { Magnetic } from './motion';
 import Terminal from './Terminal';
 
 const EASE = [0.16, 1, 0.3, 1] as const;
-function RotatingBadge() {
+// Two separate arcs so both phrases read upright: the top one runs clockwise over the top,
+// the bottom one runs counter-clockwise under the bottom (its radius is larger because
+// its letters hang inward from the path).
+function CircleBadge() {
   return (
     <a href="#projects" aria-label="Scroll to my work" className="group relative grid h-32 w-32 place-items-center">
-      <svg viewBox="0 0 120 120" aria-hidden="true" className="absolute inset-0 h-full w-full animate-spin-slow motion-reduce:animate-none">
+      <svg viewBox="0 0 120 120" aria-hidden="true" className="absolute inset-0 h-full w-full">
         <defs>
-          <path id="badge-circle" d="M60,60 m-47,0 a47,47 0 1,1 94,0 a47,47 0 1,1 -94,0" />
+          <path id="badge-top" d="M16,60 A44,44 0 0,1 104,60" />
+          <path id="badge-bottom" d="M9,60 A51,51 0 0,0 111,60" />
         </defs>
-        <text className="fill-ink/70 font-mono text-[9px] uppercase" letterSpacing="2.3">
-          <textPath href="#badge-circle">Open to internships · See my work ·</textPath>
-        </text>
+        <g className="fill-ink/70 font-mono text-[9px] uppercase" letterSpacing="1.6">
+          <text>
+            <textPath href="#badge-top" startOffset="50%" textAnchor="middle">
+              Open to internships
+            </textPath>
+          </text>
+          <text>
+            <textPath href="#badge-bottom" startOffset="50%" textAnchor="middle">
+              See my work
+            </textPath>
+          </text>
+        </g>
+        <circle cx="8" cy="60" r="1.6" className="fill-accent" />
+        <circle cx="112" cy="60" r="1.6" className="fill-accent" />
       </svg>
-      <span className="grid h-14 w-14 place-items-center rounded-full bg-accent text-paper transition-transform duration-300 group-hover:scale-110">
+      <span className="grid h-14 w-14 place-items-center rounded-full bg-accent text-paper transition-transform duration-300 group-hover:translate-y-1 group-hover:scale-110">
         <ArrowRight className="h-5 w-5 rotate-90" />
       </span>
     </a>
@@ -80,7 +95,7 @@ export default function Hero() {
             animate={{ opacity: 1, scale: 1, rotate: 0 }}
             transition={{ delay: 1.1, duration: 1.1, ease: EASE }}
           >
-            <RotatingBadge />
+            <CircleBadge />
           </motion.div>
         </div>
 

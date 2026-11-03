@@ -18,7 +18,6 @@ export default {
       },
       animation: {
         blink: 'blink 1.1s steps(1) infinite',
-        'spin-slow': 'spin 18s linear infinite',
       },
       keyframes: {
         blink: { '50%': { opacity: '0' } },
