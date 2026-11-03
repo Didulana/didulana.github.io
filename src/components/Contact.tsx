@@ -18,10 +18,10 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="scroll-mt-20 border-t border-ink/10 py-20 md:py-28">
+    <section id="contact" className="scroll-mt-20 border-t border-ink/10 py-16 md:py-20">
       <div className="mx-auto max-w-page px-4 sm:px-6 md:px-10">
         <Reveal>
-          <div className="relative isolate overflow-hidden rounded-3xl bg-ink px-6 py-12 text-paper sm:px-10 md:px-16 md:py-20">
+          <div className="relative isolate overflow-hidden rounded-3xl bg-ink px-6 py-12 text-paper sm:px-10 md:px-14 md:py-14">
             <div aria-hidden="true" className="contact-blob contact-blob-a" />
             <div aria-hidden="true" className="contact-blob contact-blob-b" />
             <p className="font-mono text-xs font-medium uppercase tracking-[0.14em] text-accent">Contact</p>
@@ -29,12 +29,12 @@ export default function Contact() {
               Hiring an intern? I’d like to hear from you.
             </h2>
             <p className="mt-4 max-w-xl text-lg leading-relaxed text-paper/70">
-              I’m looking for a software engineering internship, and I’m always happy to walk
-              through any of the projects above in more detail.
+              I’m looking for a software engineering internship, and happy to walk through any
+              project in detail.
               {profile.email && ' Email is the quickest way to reach me.'}
             </p>
 
-            <div className="mt-10 flex flex-wrap items-center gap-3">
+            <div className="mt-8 flex flex-wrap items-center gap-3">
               {profile.email && (
                 <>
                   <Magnetic>

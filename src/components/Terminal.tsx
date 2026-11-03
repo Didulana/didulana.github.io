@@ -39,7 +39,7 @@ export default function Terminal() {
         Didulana Lokugamage. BSc Computer Engineering, Year 3, University of Peradeniya, Sri Lanka. Open to internship opportunities.
       </p>
 
-      <div aria-hidden="true" className="min-h-[15rem] space-y-1.5 p-5 font-mono text-[13px] leading-relaxed sm:text-sm">
+      <div aria-hidden="true" className="min-h-[12.5rem] space-y-1 p-5 font-mono text-[13px] leading-relaxed sm:text-sm">
         {terminalScript.map((s, i) => {
           if (i > line) return null;
           const done = i < line;

@@ -10,10 +10,10 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
   const flip = index % 2 === 1;
 
   return (
-    <article className="group grid items-center gap-8 lg:grid-cols-12 lg:gap-14">
+    <article className="group grid items-start gap-8 lg:grid-cols-12 lg:gap-12">
       <div className={`lg:col-span-6 ${flip ? 'lg:order-2' : ''}`}>
         <Tilt className="rounded-3xl">
-          <div className={`project-stage project-stage--${project.slug} rounded-3xl p-5 sm:p-8`}>
+          <div className={`project-stage project-stage--${project.slug} rounded-3xl p-5 sm:p-6`}>
             <div style={{ transform: 'translateZ(40px)' }}>
               <ProjectVisual slug={project.slug} />
             </div>
@@ -27,15 +27,15 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           <span className="font-mono text-xs text-ink/50">{project.context}</span>
         </div>
 
-        <h3 className="mt-4 font-display text-3xl font-bold tracking-tight md:text-4xl">{project.title}</h3>
-        <p className="mt-2 text-lg text-ink/80">{project.summary}</p>
+        <h3 className="mt-3 font-display text-3xl font-bold tracking-tight">{project.title}</h3>
+        <p className="mt-1 text-lg text-ink/80">{project.summary}</p>
 
-        <div className="mt-6 rounded-2xl border-l-2 border-accent bg-ink/[0.03] px-5 py-4">
+        <div className="mt-5 rounded-2xl border-l-2 border-accent bg-ink/[0.03] px-5 py-3.5">
           <h4 className="font-mono text-xs uppercase tracking-[0.14em] text-ink/50">The problem</h4>
           <p className="mt-1.5 leading-relaxed text-ink/75">{project.problem}</p>
         </div>
 
-        <h4 className="mt-6 font-mono text-xs uppercase tracking-[0.14em] text-ink/50">What I did</h4>
+        <h4 className="mt-5 font-mono text-xs uppercase tracking-[0.14em] text-ink/50">What I did</h4>
         <p className="mt-1 text-sm text-ink/60">{project.role}</p>
         <ul className="mt-3 space-y-2">
           {project.contributions.map((c, i) => (
@@ -53,7 +53,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           ))}
         </ul>
 
-        <ul className="mt-6 flex flex-wrap gap-2" aria-label="Tech stack">
+        <ul className="mt-5 flex flex-wrap gap-2" aria-label="Tech stack">
           {project.stack.map((t) => (
             <li key={t} className="chip transition-colors hover:border-accent hover:text-accent">
               {t}
@@ -62,7 +62,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         </ul>
 
         {(project.githubUrl || project.demoUrl) && (
-          <div className="mt-6 flex flex-wrap gap-3">
+          <div className="mt-5 flex flex-wrap gap-3">
             {project.githubUrl && (
               <Magnetic>
                 <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="btn-secondary group/btn py-2.5">
@@ -89,10 +89,10 @@ export default function Projects() {
       id="projects"
       number="01"
       eyebrow="Selected work"
-      title="Things I’ve built, and the problems behind them."
-      intro="Each project starts with a real situation: a worried parent, a department guarding evidence, a factory line checking fabric by eye."
+      title="Things I’ve built, and why."
+      intro="Each one starts with a real problem and a real person on the other end."
     >
-      <div className="grid gap-20 md:gap-28">
+      <div className="grid gap-16 md:gap-20">
         {projects.map((p, i) => (
           <Reveal key={p.slug}>
             <ProjectCard project={p} index={i} />

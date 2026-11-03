@@ -3,55 +3,33 @@ import Reveal from './Reveal';
 import Section from './Section';
 
 const principles = [
-  {
-    n: 'a',
-    title: 'Start with the person',
-    text: 'Before choosing a tool, I ask who will use the thing and what they are worried about. The design follows from that.',
-  },
-  {
-    n: 'b',
-    title: 'Make it trustworthy',
-    text: 'Access rules, authentication and audit trails go in from the first commit, not after something goes wrong.',
-  },
-  {
-    n: 'c',
-    title: 'Question the obvious',
-    text: 'The most popular approach isn’t always the right one. I test the alternatives and let the results decide.',
-  },
-  {
-    n: 'd',
-    title: 'Ship as a team',
-    text: 'Clear branches, honest code reviews and careful releases matter as much as the code itself.',
-  },
+  { n: 'a', title: 'Start with the person', text: 'Who will use it, and what worries them? The design follows from that.' },
+  { n: 'b', title: 'Make it trustworthy', text: 'Access rules, authentication and audit trails from the first commit.' },
+  { n: 'c', title: 'Question the obvious', text: 'Test the alternatives and let the results decide, not the hype.' },
+  { n: 'd', title: 'Ship as a team', text: 'Clean branches, honest reviews and careful releases.' },
 ];
 
 export default function About() {
   return (
-    <Section id="about" number="02" eyebrow="About me" title="Curious about how things work, and how to make them work better.">
+    <Section id="about" number="02" eyebrow="About me" title="Curious by default.">
       <div className="grid gap-12 lg:grid-cols-12">
-        <Reveal className="space-y-5 text-lg leading-relaxed text-ink/75 lg:col-span-5">
+        <Reveal className="space-y-4 text-lg leading-relaxed text-ink/75 lg:col-span-5">
           <p>
-            I’m Didulana, a third-year Computer Engineering undergraduate at the University of
-            Peradeniya, Sri Lanka.
+            I’m a third-year Computer Engineering undergraduate at the University of Peradeniya. I
+            enjoy turning messy, real-world situations into systems people can depend on.
           </p>
           <p>
-            What I enjoy most is taking a messy, real-world situation and turning it into a system
-            people can depend on: one that is clear to use, safe with their data, and still
-            working the next day.
-          </p>
-          <p>
-            Outside the lab, I serve on the committee of the Association of Computer Engineering
-            Students and co-edit <em>GAUGE</em>, the engineering students’ publication.
+            Outside the lab, I’m on the ACES committee and co-edit <em>GAUGE</em>, the engineering
+            students’ publication.
           </p>
 
-          <div className="shimmer relative mt-8 overflow-hidden rounded-2xl bg-accent p-6 text-paper">
+          <div className="shimmer relative mt-6 overflow-hidden rounded-2xl bg-accent p-6 text-paper">
             <span aria-hidden="true" className="absolute -right-4 -top-6 font-display text-[7rem] font-bold leading-none opacity-20">
               →
             </span>
             <p className="font-mono text-xs uppercase tracking-[0.14em] opacity-80">What I’m looking for</p>
             <p className="relative mt-3 text-base font-medium">
-              An internship where I can learn from an experienced engineering team and contribute
-              to real, production work.
+              An internship with an experienced team, working on real production code.
             </p>
           </div>
         </Reveal>

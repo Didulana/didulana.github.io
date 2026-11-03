@@ -14,12 +14,12 @@ type Props = {
 
 export default function Section({ id, number, eyebrow, title, intro, children }: Props) {
   return (
-    <section id={id} className="relative scroll-mt-20 py-20 md:py-28">
+    <section id={id} className="relative scroll-mt-20 py-16 md:py-20">
       <div className="mx-auto max-w-page px-4 sm:px-6 md:px-10">
         <div className="relative flex items-end gap-4 pb-6">
           <motion.span
             aria-hidden="true"
-            className="text-outline font-display text-6xl font-bold leading-none md:text-8xl"
+            className="text-outline font-display text-5xl font-bold leading-none md:text-7xl"
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -27,7 +27,7 @@ export default function Section({ id, number, eyebrow, title, intro, children }:
           >
             {number}
           </motion.span>
-          <ScrambleText text={eyebrow} className="eyebrow pb-1.5 md:pb-3" />
+          <ScrambleText text={eyebrow} className="eyebrow pb-1 md:pb-2" />
           {/* Divider draws itself from left to right */}
           <motion.span
             aria-hidden="true"
@@ -39,10 +39,10 @@ export default function Section({ id, number, eyebrow, title, intro, children }:
           />
         </div>
         <Reveal delay={150}>
-          <h2 className="mt-8 max-w-3xl font-display text-3xl font-bold tracking-tight md:text-5xl">{title}</h2>
-          {intro && <p className="mt-4 max-w-2xl text-lg leading-relaxed text-ink/70">{intro}</p>}
+          <h2 className="mt-6 max-w-3xl font-display text-3xl font-bold tracking-tight md:text-[2.75rem] md:leading-[1.1]">{title}</h2>
+          {intro && <p className="mt-3 max-w-2xl text-lg leading-relaxed text-ink/70">{intro}</p>}
         </Reveal>
-        <div className="mt-12 md:mt-16">{children}</div>
+        <div className="mt-10 md:mt-12">{children}</div>
       </div>
     </section>
   );

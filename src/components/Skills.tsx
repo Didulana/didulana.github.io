@@ -10,7 +10,7 @@ export default function Skills() {
       number="03"
       eyebrow="Skills"
       title="The toolkit."
-      intro="Each group shows where I’ve used it, so you can see the work behind it."
+      intro="Grouped by where I’ve actually used them."
     >
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {skills.map((s, i) => (

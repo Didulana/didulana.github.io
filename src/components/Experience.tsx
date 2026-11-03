@@ -21,7 +21,7 @@ function Timeline({ heading, roles }: { heading: string; roles: Role[] }) {
         {roles.map((r, i) => (
           <motion.li
             key={r.title + r.org}
-            className="group relative pb-7 pl-6 last:pb-0"
+            className="group relative pb-5 pl-6 last:pb-0"
             initial={{ opacity: 0, x: -14 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: '0px 0px -15% 0px' }}
@@ -48,7 +48,7 @@ export default function Experience() {
       number="04"
       eyebrow="Beyond the code"
       title="Leadership, awards and certifications."
-      intro="What I do outside the codebase: student societies, publications, and competitions."
+      intro="Student societies, publications and competitions."
     >
       <div className="grid gap-12 lg:grid-cols-2">
         <Reveal className="grid gap-12">
@@ -61,7 +61,7 @@ export default function Experience() {
             <h3 className="font-mono text-xs font-medium uppercase tracking-[0.14em] text-ink/50">Awards</h3>
             <ul className="mt-4 divide-y divide-ink/10">
               {awards.map((a) => (
-                <li key={a.title + a.org} className="py-3.5">
+                <li key={a.title + a.org} className="py-3">
                   <p className="font-semibold">{a.title}</p>
                   <p className="text-sm text-ink/70">{a.org}</p>
                 </li>
@@ -73,7 +73,7 @@ export default function Experience() {
             <h3 className="font-mono text-xs font-medium uppercase tracking-[0.14em] text-ink/50">Certifications</h3>
             <ul className="mt-4 divide-y divide-ink/10">
               {certifications.map((c) => (
-                <li key={c.title} className="flex flex-wrap items-baseline justify-between gap-x-4 py-3.5">
+                <li key={c.title} className="flex flex-wrap items-baseline justify-between gap-x-4 py-3">
                   <p className="font-semibold">{c.title}</p>
                   <p className="text-sm text-ink/60">{c.issuer}</p>
                 </li>
